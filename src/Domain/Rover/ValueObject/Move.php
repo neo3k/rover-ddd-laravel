@@ -22,6 +22,11 @@ final class Move
         $this->command = $command;
     }
 
+    public static function fromString(string $command): self
+    {
+        return new self($command);
+    }
+
     public static function getAllowedMoveCommands(): array
     {
         return self::ALLOWED_MOVE_COMMANDS;

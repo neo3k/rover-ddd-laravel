@@ -52,6 +52,14 @@ final class Rover
     /**
      * @return string
      */
+    public function getDirection(): Direction
+    {
+        return $this->direction;
+    }
+
+    /**
+     * @return string
+     */
     public function __toString(): string
     {
         return (string)($this->position . ' ' . $this->direction);

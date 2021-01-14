@@ -27,6 +27,16 @@ final class Position
     }
 
     /**
+     * @param int $x
+     * @param int $y
+     * @return static
+     */
+    public static function fromInt(int $x, int $y): self
+    {
+        return new self($x, $y);
+    }
+
+    /**
      * @return Coordinate
      */
     public function x(): Coordinate

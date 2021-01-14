@@ -26,9 +26,16 @@ final class Direction
 
     public function __construct(string $direction)
     {
-        //$this->ensureIsAllowedDirection($direction);
-
         $this->direction = $direction;
+    }
+
+    /**
+     * @param string $direction
+     * @return static
+     */
+    public static function fromString(string $direction): self
+    {
+        return new self($direction);
     }
 
     public function heading(Rotate $rotate): self
