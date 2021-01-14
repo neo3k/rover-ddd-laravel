@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Vera\Rover\Infrastructure\Rover\Specification;
+namespace Vera\Rover\Domain\Rover\Specification;
 
 
 use Vera\Rover\Domain\Rover\ValueObject\Move;

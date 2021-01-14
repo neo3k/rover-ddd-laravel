@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Vera\Rover\Infrastructure\Rover\Specification;
+namespace Vera\Rover\Domain\Rover\Specification;
 
 
 use Vera\Rover\Domain\Rover\ValueObject\Direction;
