@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Vera\Rover\Domain\Rover\ValueObject;
+namespace Vera\Rover\Domain\Shared\ValueObject;
 
 final class Coordinate
 {
@@ -29,5 +29,10 @@ final class Coordinate
     public function __toString(): string
     {
         return (string)$this->coordinate;
+    }
+
+    public function __toInt(): int
+    {
+        return (int)$this->coordinate;
     }
 }

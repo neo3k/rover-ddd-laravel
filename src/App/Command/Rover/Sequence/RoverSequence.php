@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Vera\Rover\App\Command\Rover\Sequence;
 
+use Domain\Rover\Specification\RoverSpecification;
 use InvalidArgumentException;
 use Symfony\Component\Console\Command\Command;
 use Vera\Rover\Domain\Rover\Model\Rover;
@@ -27,8 +28,9 @@ class RoverSequence
         array $sequence,
         RoverDirectionSpecification $roverDirectionSpec,
         RoverMoveSpecification $roverMoveSpec,
-        RoverRotateSpecification $roverRotateSpec
-    ) {
+        RoverRotateSpecification $roverRotateSpec,
+        RoverSpecification $roverSpec
+    ): int {
         foreach ($sequence as $instruction) {
             try {
                 $roverDirectionSpec->ensureIsAllowedCardinatePoint($rover->getDirection());
@@ -38,9 +40,11 @@ class RoverSequence
                 try {
                     $roverDirectionSpec->ensureIsAllowedCardinatePoint($rover->getDirection());
                     $roverMoveSpec->ensureIsAllowedMoveCommand(Move::fromString($instruction));
+                    $roverSpec->ensureNotObstacleInFront($rover, Move::fromString($instruction));
                     $rover->move(Move::fromString($instruction));
                 } catch (InvalidArgumentException $exception) {
                     (new ConsoleOutput())->writeln($exception->getMessage());
+                    (new ConsoleOutput())->writeln($rover->__toString());
                     return Command::FAILURE;
                 }
             }

@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace App\Command\Rover\Sequence;
 
 
-use Gears\CQRS\Command;
+use Domain\Rover\Specification\RoverSpecification;
 use Vera\Rover\App\Command\Rover\Sequence\RoverSequence;
 use Vera\Rover\App\Command\Rover\Sequence\RoverSequenceCommand;
-use Vera\Rover\Domain\Rover\Model\Rover;
 use Vera\Rover\Domain\Rover\Specification\RoverDirectionSpecification;
 use Vera\Rover\Domain\Rover\Specification\RoverMoveSpecification;
 use Vera\Rover\Domain\Rover\Specification\RoverRotateSpecification;
@@ -19,15 +18,18 @@ class RoverSequenceHandler
     private RoverDirectionSpecification $roverDirectionSpec;
     private RoverMoveSpecification $roverMoveSpec;
     private RoverRotateSpecification $roverRotateSpec;
+    private RoverSpecification $roverSpec;
 
     public function __construct(
         RoverDirectionSpecification $roverDirectionSpec,
         RoverMoveSpecification $roverMoveSpec,
-        RoverRotateSpecification $roverRotateSpec
+        RoverRotateSpecification $roverRotateSpec,
+        RoverSpecification $roverSpec
     ) {
         $this->roverDirectionSpec = $roverDirectionSpec;
         $this->roverMoveSpec = $roverMoveSpec;
         $this->roverRotateSpec = $roverRotateSpec;
+        $this->roverSpec = $roverSpec;
     }
 
     public function handle(RoverSequenceCommand $command): int
@@ -37,7 +39,8 @@ class RoverSequenceHandler
             $command->sequence,
             $this->roverDirectionSpec,
             $this->roverMoveSpec,
-            $this->roverRotateSpec
+            $this->roverRotateSpec,
+            $this->roverSpec
         );
 
     }

@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Vera\Rover\Domain\Terrain\Model;
 
-use Vera\Rover\Domain\Rover\ValueObject\Position;
+use Vera\Rover\Domain\Shared\ValueObject\Coordinate;
+use Vera\Rover\Domain\Shared\ValueObject\Position;
 
 final class Terrain
 {
 
-    private Position $position;
+    public Position $position;
 
 
     public function __construct(Position $position)

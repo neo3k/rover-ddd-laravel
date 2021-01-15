@@ -6,18 +6,20 @@ namespace Vera\Rover\Domain\Rover\Model;
 
 use Vera\Rover\Domain\Rover\ValueObject\Direction;
 use Vera\Rover\Domain\Rover\ValueObject\Move;
-use Vera\Rover\Domain\Rover\ValueObject\Position;
+use Vera\Rover\Domain\Shared\ValueObject\Position;
 use Vera\Rover\Domain\Rover\ValueObject\Rotate;
+use Vera\Rover\Domain\Terrain\Model\Terrain;
 
 final class Rover
 {
 
-    private Position $position;
-    private Direction $direction;
+    public Position $position;
+    public Direction $direction;
 
 
-    public function __construct(Position $position, Direction $direction)
+    public function __construct(Terrain $terrain, Position $position, Direction $direction)
     {
+        $this->terrain = $terrain;
         $this->position = $position;
         $this->direction = $direction;
     }

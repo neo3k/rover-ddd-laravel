@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Vera\Rover\Domain\Rover\ValueObject;
+namespace Vera\Rover\Domain\Shared\ValueObject;
 
 final class Position
 {

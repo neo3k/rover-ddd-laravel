@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Command\Rover\Sequence\RoverSequenceHandler;
 use Joselfonseca\LaravelTactician\CommandBusInterface;
 use Illuminate\Console\Command;
+use Symfony\Component\Console\Question\Question;
 use Vera\Rover\App\Command\Rover\Sequence\RoverSequenceCommand;
 
 class Rover extends Command
@@ -46,14 +47,23 @@ class Rover extends Command
     {
         $this->line('Mars Rover CLI');
         $this->newLine();
+        $terrainXInput = $this->ask('Terrain Size: Enter Coordinate X');
+        $terrainYInput = $this->ask('Terrain Size: Enter Coordinate Y');
+
         $coordinateXInput = $this->ask('Rover Starting point: Enter Coordinate X');
+
         if (!is_numeric($coordinateXInput) || $coordinateXInput === '') {
-            $coordinateXInput = $this->ask('Rover Starting point: Enter Coordinate X (Should be a number)');
+            $this->line('Should be a number');
+            return Command::FAILURE;
         }
+
         $coordinateYInput = $this->ask('Rover Starting point: Enter Coordinate Y');
+
         if (!is_numeric($coordinateYInput) || $coordinateYInput === '') {
-            $coordinateYInput = $this->ask('Rover Starting point: Enter Coordinate Y (Should be a number)');
+            $this->line('Should be a number');
+            return Command::FAILURE;
         }
+
         $directionInput = $this->choice(
             'Rover Starting point: Enter Direction',
             ['N', 'S', 'E', 'W'],
@@ -71,6 +81,8 @@ class Rover extends Command
 
         $this->commandBus->addHandler(RoverSequenceCommand::class, RoverSequenceHandler::class);
         $command = new RoverSequenceCommand(
+            $terrainXInput,
+            $terrainYInput,
             $coordinateXInput,
             $coordinateYInput,
             $directionInput,
