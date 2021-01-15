@@ -2,14 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5d97a1a2-7e3c-4e0f-ba2d-00978e1da251" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/App/Command/Rover/Sequence/RoverSequenceHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Providers/CommandsServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/housfy.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/housfy.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Rover/Model/Rover.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Rover/Model/Rover.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Command/Rover/Sequence/RoverSequence.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Command/Rover/Sequence/RoverSequence.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Command/Rover/Sequence/RoverSequenceCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Command/Rover/Sequence/RoverSequenceCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Command/Rover/Sequence/RoverSequenceHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Command/Rover/Sequence/RoverSequenceHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/ConsoleKernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/ConsoleKernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Rover/Specification/RoverDirectionSpecification.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Rover/Specification/RoverDirectionSpecification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Rover/Specification/RoverMoveSpecification.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Rover/Specification/RoverMoveSpecification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Rover/Specification/RoverRotateSpecification.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Rover/Specification/RoverRotateSpecification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Rover/ValueObject/Coordinate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Rover/ValueObject/Coordinate.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Domain/Rover/ValueObject/Direction.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Rover/ValueObject/Direction.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Domain/Rover/ValueObject/Move.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Rover/ValueObject/Move.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Domain/Rover/ValueObject/Position.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Rover/ValueObject/Position.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Rover/ValueObject/Rotate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Rover/ValueObject/Rotate.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,10 +147,6 @@
       <path value="$PROJECT_DIR$/vendor/flipbox/lumen-generator" />
       <path value="$PROJECT_DIR$/vendor/classpreloader/classpreloader" />
       <path value="$PROJECT_DIR$/vendor/dnoegel/php-xdg-base-dir" />
-      <path value="$PROJECT_DIR$/vendor/cbaconnier/laravel-mvc-to-ddd" />
-      <path value="$PROJECT_DIR$/vendor/phpgears/cqrs" />
-      <path value="$PROJECT_DIR$/vendor/phpgears/dto" />
-      <path value="$PROJECT_DIR$/vendor/phpgears/immutability" />
       <path value="$PROJECT_DIR$/vendor/psr/http-message" />
       <path value="$PROJECT_DIR$/vendor/psr/http-client" />
       <path value="$PROJECT_DIR$/vendor/filp/whoops" />
@@ -165,6 +172,12 @@
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
       <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
       <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/nunomaduro/laravel-console-menu" />
+      <path value="$PROJECT_DIR$/vendor/beberlei/assert" />
+      <path value="$PROJECT_DIR$/vendor/php-school/terminal" />
+      <path value="$PROJECT_DIR$/vendor/php-school/cli-menu" />
+      <path value="$PROJECT_DIR$/vendor/joselfonseca/laravel-tactician" />
+      <path value="$PROJECT_DIR$/vendor/league/tactician" />
     </include_path>
   </component>
   <component name="ProjectId" id="1n0xbRvn6kxeJptVKeHIsu0wQuR" />
@@ -179,6 +192,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -201,7 +215,7 @@
       <option name="presentableId" value="Default" />
       <updated>1610540882224</updated>
       <workItem from="1610540885718" duration="26630000" />
-      <workItem from="1610641890141" duration="3694000" />
+      <workItem from="1610641890141" duration="27688000" />
     </task>
     <servers />
   </component>

@@ -81,9 +81,9 @@ final class Direction
     {
         $axisValue = match ($this->direction) {
             self::NORTH => 1,
-            self::WEST => 1,
+            self::WEST => -1,
             self::SOUTH => -1,
-            self::EAST => -1,
+            self::EAST => 1,
         };
 
         return (int)$axisValue;

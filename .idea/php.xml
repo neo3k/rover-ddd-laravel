@@ -113,10 +113,6 @@
       <path value="$PROJECT_DIR$/vendor/flipbox/lumen-generator" />
       <path value="$PROJECT_DIR$/vendor/classpreloader/classpreloader" />
       <path value="$PROJECT_DIR$/vendor/dnoegel/php-xdg-base-dir" />
-      <path value="$PROJECT_DIR$/vendor/cbaconnier/laravel-mvc-to-ddd" />
-      <path value="$PROJECT_DIR$/vendor/phpgears/cqrs" />
-      <path value="$PROJECT_DIR$/vendor/phpgears/dto" />
-      <path value="$PROJECT_DIR$/vendor/phpgears/immutability" />
       <path value="$PROJECT_DIR$/vendor/psr/http-message" />
       <path value="$PROJECT_DIR$/vendor/psr/http-client" />
       <path value="$PROJECT_DIR$/vendor/filp/whoops" />
@@ -142,6 +138,12 @@
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
       <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
       <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/nunomaduro/laravel-console-menu" />
+      <path value="$PROJECT_DIR$/vendor/beberlei/assert" />
+      <path value="$PROJECT_DIR$/vendor/php-school/terminal" />
+      <path value="$PROJECT_DIR$/vendor/php-school/cli-menu" />
+      <path value="$PROJECT_DIR$/vendor/joselfonseca/laravel-tactician" />
+      <path value="$PROJECT_DIR$/vendor/league/tactician" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />

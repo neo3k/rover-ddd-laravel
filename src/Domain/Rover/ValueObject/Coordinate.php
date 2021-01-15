@@ -25,4 +25,9 @@ final class Coordinate
     {
         return new self($this->coordinate + $coordinate);
     }
+
+    public function __toString(): string
+    {
+        return (string)$this->coordinate;
+    }
 }

@@ -22,6 +22,11 @@ final class Rotate
         $this->command = $command;
     }
 
+    public static function fromString(string $command): self
+    {
+        return new self($command);
+    }
+
     public static function getAllowedRotateCommands(): array
     {
         return self::ALLOWED_ROTATE_COMMANDS;

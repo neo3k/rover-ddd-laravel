@@ -27,12 +27,15 @@ final class Position
     }
 
     /**
-     * @param int $x
-     * @param int $y
+     * @param string $x
+     * @param string $y
      * @return static
      */
-    public static function fromInt(int $x, int $y): self
+    public static function fromString(string $x, string $y): self
     {
+        $x = New Coordinate(intval($x));
+        $y = New Coordinate(intval($y));
+
         return new self($x, $y);
     }
 
@@ -57,6 +60,6 @@ final class Position
      */
     public function __toString(): string
     {
-        return (string)($this->x . ',' . $this->y);
+        return (string)($this->x->__toString() . ' ' . $this->y->__toString());
     }
 }

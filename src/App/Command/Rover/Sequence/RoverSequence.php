@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace Vera\Rover\App\Command\Rover\Sequence;
 
 use InvalidArgumentException;
+use Symfony\Component\Console\Command\Command;
 use Vera\Rover\Domain\Rover\Model\Rover;
 use Vera\Rover\Domain\Rover\Specification\RoverDirectionSpecification;
 use Vera\Rover\Domain\Rover\Specification\RoverMoveSpecification;
 use Vera\Rover\Domain\Rover\Specification\RoverRotateSpecification;
 use Vera\Rover\Domain\Rover\ValueObject\Move;
 use Vera\Rover\Domain\Rover\ValueObject\Rotate;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 
 class RoverSequence
@@ -30,19 +32,21 @@ class RoverSequence
         foreach ($sequence as $instruction) {
             try {
                 $roverDirectionSpec->ensureIsAllowedCardinatePoint($rover->getDirection());
-                $roverRotateSpec->ensureIsAllowedMoveCommand($instruction);
-                $rover->rotate(new Rotate($instruction));
+                $roverRotateSpec->ensureIsAllowedMoveCommand(Rotate::fromString($instruction));
+                $rover->rotate(Rotate::fromString($instruction));
             } catch (InvalidArgumentException $exception) {
                 try {
                     $roverDirectionSpec->ensureIsAllowedCardinatePoint($rover->getDirection());
-                    $roverMoveSpec->ensureIsAllowedMoveCommand($instruction);
-                    $rover->move(new Move($instruction));
+                    $roverMoveSpec->ensureIsAllowedMoveCommand(Move::fromString($instruction));
+                    $rover->move(Move::fromString($instruction));
                 } catch (InvalidArgumentException $exception) {
-                    throw new InvalidArgumentException('Operation is not executable');
+                    (new ConsoleOutput())->writeln($exception->getMessage());
+                    return Command::FAILURE;
                 }
             }
         }
 
-        return $rover;
+        (new ConsoleOutput())->writeln($rover->__toString());
+        return Command::SUCCESS;
     }
 }

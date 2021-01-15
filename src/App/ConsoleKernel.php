@@ -13,7 +13,7 @@ class ConsoleKernel extends Kernel
      * @var array
      */
     protected $commands = [
-        //
+        'App\Console\Commands\Rover'
     ];
 
     /**

@@ -11,7 +11,7 @@ class RoverMoveSpecification
     public function ensureIsAllowedMoveCommand(Move $move): ?bool
     {
         if (!in_array($move, Move::getAllowedMoveCommands())) {
-            throw new \InvalidArgumentException(sprintf('Unrecognized Command: <%s>', $move));
+            throw new \InvalidArgumentException(sprintf('Unrecognized Command: %s', $move->__toString()));
         }
 
         return true;

@@ -11,7 +11,7 @@ class RoverRotateSpecification
     public function ensureIsAllowedMoveCommand(Rotate $rotate): ?bool
     {
         if (!in_array($rotate, Rotate::getAllowedRotateCommands())) {
-            throw new \InvalidArgumentException(sprintf('Unrecognized Command: <%s>', $rotate));
+            throw new \InvalidArgumentException(sprintf('Unrecognized Command: <%s>', $rotate->__toString()));
         }
 
         return true;

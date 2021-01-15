@@ -8,6 +8,7 @@ namespace App\Command\Rover\Sequence;
 use Gears\CQRS\Command;
 use Vera\Rover\App\Command\Rover\Sequence\RoverSequence;
 use Vera\Rover\App\Command\Rover\Sequence\RoverSequenceCommand;
+use Vera\Rover\Domain\Rover\Model\Rover;
 use Vera\Rover\Domain\Rover\Specification\RoverDirectionSpecification;
 use Vera\Rover\Domain\Rover\Specification\RoverMoveSpecification;
 use Vera\Rover\Domain\Rover\Specification\RoverRotateSpecification;
@@ -29,21 +30,15 @@ class RoverSequenceHandler
         $this->roverRotateSpec = $roverRotateSpec;
     }
 
-    protected function getSupportedCommandType(): string
+    public function handle(RoverSequenceCommand $command): int
     {
-        return RoverSequenceCommand::class;
-    }
-
-    protected function handleCommand(Command $command): void
-    {
-        /* @var RoverSequenceCommand $command */
-
-        $user = (new RoverSequence())->exec(
+        return (new RoverSequence())->exec(
             $command->rover,
             $command->sequence,
             $this->roverDirectionSpec,
             $this->roverMoveSpec,
             $this->roverRotateSpec
         );
+
     }
 }

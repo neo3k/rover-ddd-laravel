@@ -10,10 +10,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/Domain" isTestSource="false" packagePrefix="Domain\" />
       <sourceFolder url="file://$MODULE_DIR$/src/Support" isTestSource="false" packagePrefix="Support\" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="Tests\" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/cbaconnier/laravel-mvc-to-ddd" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/phpgears/cqrs" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/phpgears/dto" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/phpgears/immutability" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/http-message" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/http-client" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/filp/whoops" />
@@ -39,6 +35,12 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/guzzlehttp/guzzle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/swiftmailer/swiftmailer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nunomaduro/laravel-console-menu" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/beberlei/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/php-school/terminal" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/php-school/cli-menu" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/joselfonseca/laravel-tactician" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/league/tactician" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

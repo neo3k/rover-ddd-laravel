@@ -40,4 +40,12 @@ final class Move
     {
         return (self::MOVEMENT_FACTOR * $value);
     }
+
+    /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return (string)$this->command;
+    }
 }

@@ -16,7 +16,10 @@ class RoverDirectionSpecification
     public function ensureIsAllowedCardinatePoint(Direction $direction): ?bool
     {
         if (!in_array($direction->__toString(), $direction::getAllowedDirections(), true)) {
-            throw new \InvalidArgumentException(sprintf('Unrecognized Direction: <%s>', $direction));
+            $error_msg = sprintf('Unrecognized Direction: %s - ', $direction->__toString());
+            $error_msg .= 'The direction should be ';
+            $error_msg .= implode(', ', $direction::getAllowedDirections());
+            throw new \InvalidArgumentException($error_msg);
         }
 
         return true;
