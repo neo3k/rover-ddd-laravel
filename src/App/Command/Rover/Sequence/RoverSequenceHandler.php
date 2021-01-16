@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\Command\Rover\Sequence;
 
 
-use Domain\Rover\Specification\RoverSpecification;
 use Vera\Rover\App\Command\Rover\Sequence\RoverSequence;
 use Vera\Rover\App\Command\Rover\Sequence\RoverSequenceCommand;
 use Vera\Rover\Domain\Rover\Specification\RoverDirectionSpecification;
 use Vera\Rover\Domain\Rover\Specification\RoverMoveSpecification;
 use Vera\Rover\Domain\Rover\Specification\RoverPositionSpecification;
 use Vera\Rover\Domain\Rover\Specification\RoverRotateSpecification;
+use Vera\Rover\Domain\Rover\Specification\RoverSpecification;
 use Vera\Rover\Domain\Terrain\Specification\TerrainObstacleSpecification;
 use Vera\Rover\Domain\Terrain\Specification\TerrainPositionSpecification;
 

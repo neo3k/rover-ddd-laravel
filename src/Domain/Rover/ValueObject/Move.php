@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Vera\Rover\Domain\Rover\ValueObject;
 
-final class Move
+class Move
 {
 
     public const COMMAND_MOVE = 'F';
 
-    private const MOVEMENT_FACTOR = 1;
+    public const MOVEMENT_FACTOR = 1;
 
     private const ALLOWED_MOVE_COMMANDS = [
         self::COMMAND_MOVE,

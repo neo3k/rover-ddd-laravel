@@ -2,9 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5d97a1a2-7e3c-4e0f-ba2d-00978e1da251" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/tests/Rover/App/Command/Rover/Sequence/RoverSequenceUnitTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Rover/Domain/Rover/Model/RoverTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Rover/Domain/Rover/Specification/RoverDirectionSpecificationTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Rover/Domain/Rover/Specification/RoverMoveSpecificationTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Rover/Domain/Rover/Specification/RoverPositionSpecificationTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Rover/Domain/Rover/Specification/RoverRotateSpecificationTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Rover/Domain/Rover/Specification/RoverSpecificationTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Rover/Domain/Rover/ValueObject/DirectionTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Rover/Domain/Rover/ValueObject/MoveTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Rover/Domain/Rover/ValueObject/RotateTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Rover/Domain/Shared/ValueObject/CoordinateTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Rover/Domain/Shared/ValueObject/PositionTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Rover/Domain/Terrain/Specification/TerrainObstacleSpecificationTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Rover/Domain/Terrain/Specification/TerrainPositionSpecificationTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Rover/UI/Cli/Command/RoverCommandTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/housfy.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/housfy.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Console/Commands/Rover.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Cli/Command/Rover.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/ConsoleKernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/ConsoleKernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Command/Rover/Sequence/RoverSequence.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Command/Rover/Sequence/RoverSequence.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Command/Rover/Sequence/RoverSequenceHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Command/Rover/Sequence/RoverSequenceHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Rover/Model/Rover.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Rover/Model/Rover.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Rover/Specification/RoverSpecification.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Rover/Specification/RoverSpecification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Rover/ValueObject/Direction.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Rover/ValueObject/Direction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Rover/ValueObject/Move.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Rover/ValueObject/Move.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Rover/ValueObject/Rotate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Rover/ValueObject/Rotate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Shared/ValueObject/Position.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Shared/ValueObject/Position.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Terrain/Model/Terrain.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Terrain/Model/Terrain.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Terrain/Specification/TerrainObstacleSpecification.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Terrain/Specification/TerrainObstacleSpecification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Terrain/ValueObject/Obstacle.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Terrain/ValueObject/Obstacle.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/ExampleTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/ExampleTest.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,6 +193,12 @@
       <path value="$PROJECT_DIR$/vendor/php-school/cli-menu" />
       <path value="$PROJECT_DIR$/vendor/joselfonseca/laravel-tactician" />
       <path value="$PROJECT_DIR$/vendor/league/tactician" />
+      <path value="$PROJECT_DIR$/vendor/pestphp/pest-plugin" />
+      <path value="$PROJECT_DIR$/vendor/pestphp/pest-plugin-init" />
+      <path value="$PROJECT_DIR$/vendor/pestphp/pest-plugin-expectations" />
+      <path value="$PROJECT_DIR$/vendor/pestphp/pest" />
+      <path value="$PROJECT_DIR$/vendor/pestphp/pest-plugin-coverage" />
+      <path value="$PROJECT_DIR$/vendor/pestphp/pest-plugin-laravel" />
     </include_path>
   </component>
   <component name="ProjectId" id="1n0xbRvn6kxeJptVKeHIsu0wQuR" />
@@ -174,16 +211,19 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/Rover/Domain/Rover" />
+      <recent name="$PROJECT_DIR$/tests/Rover" />
+      <recent name="$PROJECT_DIR$/tests/Unit" />
       <recent name="$PROJECT_DIR$/src/UI/Cli/Command" />
       <recent name="$PROJECT_DIR$/src/Domain/Shared/ValueObject" />
-      <recent name="$PROJECT_DIR$/src/Domain/Rover" />
     </key>
   </component>
   <component name="RunManager">
@@ -201,7 +241,7 @@
       <option name="presentableId" value="Default" />
       <updated>1610540882224</updated>
       <workItem from="1610540885718" duration="26630000" />
-      <workItem from="1610641890141" duration="54983000" />
+      <workItem from="1610641890141" duration="82532000" />
     </task>
     <servers />
   </component>

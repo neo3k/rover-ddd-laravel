@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Domain\Rover\Specification;
+namespace Vera\Rover\Domain\Rover\Specification;
 
 
 use Vera\Rover\Domain\Rover\Model\Rover;
@@ -28,11 +28,11 @@ class RoverSpecification
             }
 
             foreach ($rover->terrain->obstacle->__toArray() as $obstacle) {
-                if ($obstacle[0]->__toInt() === $rover->position->x()->__toInt() + $axisValue && $obstacle[1]->__toInt(
+                if ($obstacle->x()->__toInt() === $rover->position->x()->__toInt() + $axisValue && $obstacle->y()->__toInt(
                     ) === $rover->position->y()->__toInt()) {
 
                     throw new \InvalidArgumentException(
-                        'Rover cannot move forward, there is an obstacle (' . $obstacle[0] . ',' . $obstacle[1] . '). The rest of the sequence is cancelled.'
+                        'Rover cannot move forward, there is an obstacle (' . $obstacle->x() . ',' . $obstacle->y() . '). The rest of the sequence is cancelled.'
                     );
                 }
             }
@@ -45,11 +45,11 @@ class RoverSpecification
             }
 
             foreach ($rover->terrain->obstacle->__toArray() as $obstacle) {
-                if ($obstacle[0]->__toInt() === $rover->position->x()->__toInt() && $obstacle[1]->__toInt(
+                if ($obstacle->x()->__toInt() === $rover->position->x()->__toInt() && $obstacle->y()->__toInt(
                     ) === $rover->position->y()->__toInt() + $axisValue) {
 
                     throw new \InvalidArgumentException(
-                        'Rover cannot move forward, there is an obstacle (' . $obstacle[0] . ',' . $obstacle[1] . '). The rest of the sequence is cancelled.'
+                        'Rover cannot move forward, there is an obstacle (' . $obstacle->x() . ',' . $obstacle->y() . '). The rest of the sequence is cancelled.'
                     );
                 }
             }

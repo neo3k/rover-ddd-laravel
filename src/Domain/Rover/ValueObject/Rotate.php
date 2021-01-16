@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Vera\Rover\Domain\Rover\ValueObject;
 
-final class Rotate
+class Rotate
 {
 
     public const COMMAND_ROTATE_LEFT = 'L';

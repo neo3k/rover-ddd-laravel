@@ -65,6 +65,6 @@ final class Position
      */
     public function __toString(): string
     {
-        return (string)($this->x->__toString() . ' ' . $this->y->__toString());
+        return (string)($this->x . ' ' . $this->y);
     }
 }

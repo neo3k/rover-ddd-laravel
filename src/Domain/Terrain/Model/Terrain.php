@@ -7,7 +7,7 @@ namespace Vera\Rover\Domain\Terrain\Model;
 use Vera\Rover\Domain\Shared\ValueObject\Position;
 use Vera\Rover\Domain\Terrain\ValueObject\Obstacle;
 
-final class Terrain
+class Terrain
 {
 
     public Position $position;

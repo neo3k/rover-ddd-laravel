@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Vera\Rover\Domain\Rover\ValueObject;
 
-final class Direction
+class Direction
 {
 
     private const NORTH = 'N';

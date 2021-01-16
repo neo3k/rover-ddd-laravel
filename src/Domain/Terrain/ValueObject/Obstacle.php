@@ -6,8 +6,9 @@ namespace Vera\Rover\Domain\Terrain\ValueObject;
 
 
 use Vera\Rover\Domain\Shared\ValueObject\Coordinate;
+use Vera\Rover\Domain\Shared\ValueObject\Position;
 
-final class Obstacle
+class Obstacle
 {
     private $obstacles;
 
@@ -22,7 +23,7 @@ final class Obstacle
         foreach ($obstacles as $obstacle) {
             $x = new Coordinate(intval($obstacle[0]));
             $y = new Coordinate(intval($obstacle[1]));
-            $data[] = [$x, $y];
+            $data[] = new Position($x, $y);
         }
         return new self($data);
     }

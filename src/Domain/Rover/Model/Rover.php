@@ -10,7 +10,7 @@ use Vera\Rover\Domain\Shared\ValueObject\Position;
 use Vera\Rover\Domain\Rover\ValueObject\Rotate;
 use Vera\Rover\Domain\Terrain\Model\Terrain;
 
-final class Rover
+class Rover
 {
 
     public Position $position;
@@ -41,6 +41,7 @@ final class Rover
             $this->position->x(),
             $this->position->y()->sumCoordinate($axisValue)
         );
+
     }
 
     /**
@@ -52,11 +53,27 @@ final class Rover
     }
 
     /**
-     * @return string
+     * @return Direction
      */
     public function getDirection(): Direction
     {
         return $this->direction;
+    }
+
+    /**
+     * @return Position
+     */
+    public function getPosition(): Position
+    {
+        return $this->position;
+    }
+
+    /**
+     * @return Terrain
+     */
+    public function getTerrain(): Terrain
+    {
+        return $this->terrain;
     }
 
     /**
