@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Vera\Rover\UI\Cli\Command;
 
 use App\Command\Rover\Sequence\RoverSequenceHandler;
 use Joselfonseca\LaravelTactician\CommandBusInterface;
