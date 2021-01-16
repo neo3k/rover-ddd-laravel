@@ -10,10 +10,13 @@ use Symfony\Component\Console\Command\Command;
 use Vera\Rover\Domain\Rover\Model\Rover;
 use Vera\Rover\Domain\Rover\Specification\RoverDirectionSpecification;
 use Vera\Rover\Domain\Rover\Specification\RoverMoveSpecification;
+use Vera\Rover\Domain\Rover\Specification\RoverPositionSpecification;
 use Vera\Rover\Domain\Rover\Specification\RoverRotateSpecification;
 use Vera\Rover\Domain\Rover\ValueObject\Move;
 use Vera\Rover\Domain\Rover\ValueObject\Rotate;
 use Symfony\Component\Console\Output\ConsoleOutput;
+use Vera\Rover\Domain\Terrain\Specification\TerrainObstacleSpecification;
+use Vera\Rover\Domain\Terrain\Specification\TerrainPositionSpecification;
 
 
 class RoverSequence
@@ -29,8 +32,20 @@ class RoverSequence
         RoverDirectionSpecification $roverDirectionSpec,
         RoverMoveSpecification $roverMoveSpec,
         RoverRotateSpecification $roverRotateSpec,
-        RoverSpecification $roverSpec
+        RoverPositionSpecification $roverPositionSpec,
+        RoverSpecification $roverSpec,
+        TerrainPositionSpecification $terrainPositionSpec,
+        TerrainObstacleSpecification $terrainObstacleSpec
     ): int {
+        try {
+            $roverSpec->ensurePositionIsInsideBounds($rover);
+            $roverPositionSpec->ensureIsAllowedPosition($rover->position);
+            $terrainPositionSpec->ensureIsAllowedPosition($rover->terrain->position);
+            $terrainObstacleSpec->ensureObstaclesAreInAllowedPosition($rover->terrain->obstacle);
+        } catch (InvalidArgumentException $exception) {
+            (new ConsoleOutput())->writeln($exception->getMessage());
+            return Command::FAILURE;
+        }
         foreach ($sequence as $instruction) {
             try {
                 $roverDirectionSpec->ensureIsAllowedCardinatePoint($rover->getDirection());

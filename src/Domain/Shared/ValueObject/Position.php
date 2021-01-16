@@ -55,6 +55,11 @@ final class Position
         return $this->y;
     }
 
+    public function __toArray(): array
+    {
+        return [$this->x, $this->y];
+    }
+
     /**
      * @return string
      */

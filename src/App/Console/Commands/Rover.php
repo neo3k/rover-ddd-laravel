@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use App\Command\Rover\Sequence\RoverSequenceHandler;
 use Joselfonseca\LaravelTactician\CommandBusInterface;
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Question\Question;
 use Vera\Rover\App\Command\Rover\Sequence\RoverSequenceCommand;
 
 class Rover extends Command
@@ -30,11 +29,12 @@ class Rover extends Command
      * @return void
      */
     private CommandBusInterface $commandBus;
+    private array $obstacles;
 
     public function __construct(CommandBusInterface $commandBus)
     {
         parent::__construct();
-
+        $this->obstacles = [];
         $this->commandBus = $commandBus;
     }
 
@@ -45,22 +45,21 @@ class Rover extends Command
      */
     public function handle()
     {
-        $this->line('Mars Rover CLI');
-        $this->newLine();
         $terrainXInput = $this->ask('Terrain Size: Enter Coordinate X');
-        $terrainYInput = $this->ask('Terrain Size: Enter Coordinate Y');
-
-        $coordinateXInput = $this->ask('Rover Starting point: Enter Coordinate X');
-
-        if (!is_numeric($coordinateXInput) || $coordinateXInput === '') {
-            $this->line('Should be a number');
+        if (!$this->assertIsInteger($terrainXInput)) {
             return Command::FAILURE;
         }
-
+        $terrainYInput = $this->ask('Terrain Size: Enter Coordinate Y');
+        if (!$this->assertIsInteger($terrainYInput)) {
+            return Command::FAILURE;
+        }
+        $this->askObstacles();
+        $coordinateXInput = $this->ask('Rover Starting point: Enter Coordinate X');
+        if (!$this->assertIsInteger($coordinateXInput)) {
+            return Command::FAILURE;
+        }
         $coordinateYInput = $this->ask('Rover Starting point: Enter Coordinate Y');
-
-        if (!is_numeric($coordinateYInput) || $coordinateYInput === '') {
-            $this->line('Should be a number');
+        if (!$this->assertIsInteger($coordinateYInput)) {
             return Command::FAILURE;
         }
 
@@ -83,12 +82,48 @@ class Rover extends Command
         $command = new RoverSequenceCommand(
             $terrainXInput,
             $terrainYInput,
+            $this->obstacles,
             $coordinateXInput,
             $coordinateYInput,
             $directionInput,
             str_split($sequence)
         );
         $this->commandBus->dispatch($command);
+    }
 
+    private function assertIsInteger($input)
+    {
+        if (!is_numeric($input) || $input === '' || (int)$input < 0 || is_numeric($input) && floor($input) != $input) {
+            $this->line('Should be a positive integer');
+            return false;
+        }
+        return true;
+    }
+
+    private function askObstacles()
+    {
+        $obstacleArrayLength = count($this->obstacles);
+
+        if ($obstacleArrayLength === 0) {
+            $response = $this->choice('Do you want to add an obstacle?', ['Yes', 'No'], 0);
+        } else {
+            $response = 'Yes';
+        }
+        if ($response === 'Yes') {
+            $obstacleInputX = $this->ask('Obstacle_' . $obstacleArrayLength . ': Enter Coordinate X');
+            if (!$this->assertIsInteger($obstacleInputX)) {
+                return Command::FAILURE;
+            }
+            $obstacleInputY = $this->ask('Obstacle_' . $obstacleArrayLength . ': Enter Coordinate Y');
+            if (!$this->assertIsInteger($obstacleInputY)) {
+                return Command::FAILURE;
+            }
+            $this->obstacles[] = [$obstacleInputX, $obstacleInputY];
+
+            $response = $this->choice('Do you want to add another obstacle?', ['Yes', 'No'], 0);
+            if ($response === 'Yes') {
+                $this->askObstacles();
+            }
+        }
     }
 }
