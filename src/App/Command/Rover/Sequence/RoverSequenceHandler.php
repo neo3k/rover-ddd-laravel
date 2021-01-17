@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Command\Rover\Sequence;
 
 
+use App\Command\Shared\CommandBusHandlerInterface;
+use App\Command\Shared\CommandBusStatus;
 use Vera\Rover\App\Command\Rover\Sequence\RoverSequence;
 use Vera\Rover\App\Command\Rover\Sequence\RoverSequenceCommand;
 use Vera\Rover\Domain\Rover\Specification\RoverDirectionSpecification;
@@ -15,7 +17,7 @@ use Vera\Rover\Domain\Rover\Specification\RoverSpecification;
 use Vera\Rover\Domain\Terrain\Specification\TerrainObstacleSpecification;
 use Vera\Rover\Domain\Terrain\Specification\TerrainPositionSpecification;
 
-class RoverSequenceHandler
+class RoverSequenceHandler implements CommandBusHandlerInterface
 {
 
     private RoverDirectionSpecification $roverDirectionSpec;
@@ -24,6 +26,11 @@ class RoverSequenceHandler
     private RoverSpecification $roverSpec;
     private TerrainPositionSpecification $terrainPositionSpec;
     private TerrainObstacleSpecification $terrainObstacleSpec;
+    private RoverPositionSpecification $roverPositionSpec;
+
+    /**
+     * @var RoverPositionSpecification
+     */
 
     public function __construct(
         RoverDirectionSpecification $roverDirectionSpec,
@@ -43,7 +50,7 @@ class RoverSequenceHandler
         $this->terrainObstacleSpec = $terrainObstacleSpec;
     }
 
-    public function handle(RoverSequenceCommand $command): int
+    public function handle(RoverSequenceCommand $command): CommandBusStatus
     {
         return (new RoverSequence())->exec(
             $command->rover,

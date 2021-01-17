@@ -77,7 +77,6 @@ class Rover extends Command
 
         $sequence = $this->ask('Rover Sequence: Enter Commands (No blank spaces)');
 
-
         $this->commandBus->addHandler(RoverSequenceCommand::class, RoverSequenceHandler::class);
         $command = new RoverSequenceCommand(
             $terrainXInput,
@@ -88,7 +87,12 @@ class Rover extends Command
             $directionInput,
             str_split($sequence)
         );
-        $this->commandBus->dispatch($command);
+
+        $status = $this->commandBus->dispatch($command);
+        if($status->getStatus() === 0)
+        {
+            $this->line($status->getErrorMessage());
+        }
     }
 
     private function assertIsInteger($input)

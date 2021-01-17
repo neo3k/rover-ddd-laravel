@@ -2,6 +2,7 @@
 
 namespace Tests\Rover\App\Command\Rover\Sequence;
 
+use App\Command\Shared\CommandBusStatus;
 use Symfony\Component\Console\Command\Command;
 use Vera\Rover\App\Command\Rover\Sequence\RoverSequence;
 use PHPUnit\Framework\TestCase;
@@ -88,7 +89,7 @@ class RoverSequenceUnitTest extends TestCase
             $this->mockedTerrainObstacleSpecClass
         );
 
-        self::assertEquals(Command::SUCCESS, $result);
+        self::assertEquals((new CommandBusStatus(1))->getStatus(), $result->getStatus());
 
     }
 
@@ -125,7 +126,7 @@ class RoverSequenceUnitTest extends TestCase
             $this->mockedTerrainObstacleSpecClass
         );
 
-        self::assertEquals(Command::FAILURE, $result);
+        self::assertEquals((new CommandBusStatus(0))->getStatus(), $result->getStatus());
 
     }
 }

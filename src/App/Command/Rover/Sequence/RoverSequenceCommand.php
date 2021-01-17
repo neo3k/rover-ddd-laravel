@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace Vera\Rover\App\Command\Rover\Sequence;
 
 
+use App\Command\Shared\CommandBusInterface;
 use Vera\Rover\Domain\Rover\Model\Rover;
 use Vera\Rover\Domain\Rover\ValueObject\Direction;
 use Vera\Rover\Domain\Shared\ValueObject\Position;
 use Vera\Rover\Domain\Terrain\Model\Terrain;
 use Vera\Rover\Domain\Terrain\ValueObject\Obstacle;
 
-class RoverSequenceCommand
+class RoverSequenceCommand implements CommandBusInterface
 {
 
     public Rover $rover;
