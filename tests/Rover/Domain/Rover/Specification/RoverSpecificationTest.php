@@ -2,6 +2,7 @@
 
 namespace Tests\Rover\Domain\Rover\Specification;
 
+use Ramsey\Uuid\Uuid;
 use Vera\Rover\Domain\Rover\Model\Rover;
 use Vera\Rover\Domain\Rover\Specification\RoverSpecification;
 use PHPUnit\Framework\TestCase;
@@ -21,6 +22,7 @@ class RoverSpecificationTest extends TestCase
     {
         parent::setUp();
         $this->rover = new Rover(
+            Uuid::uuid1(),
             new Terrain(Position::fromString('5', '5'), Obstacle::fromArray([['0','1']])),
             Position::fromString('0', '0'),
             Direction::fromString('E')
@@ -47,6 +49,7 @@ class RoverSpecificationTest extends TestCase
     public function test_rover_detects_an_obstacle_and_stops(): void
     {
         $this->rover = new Rover(
+            Uuid::uuid1(),
             new Terrain(Position::fromString('5', '5'), Obstacle::fromArray([['1','0']])),
             Position::fromString('0', '0'),
             Direction::fromString('E')
@@ -78,6 +81,7 @@ class RoverSpecificationTest extends TestCase
     public function test_rover_position_is_outside_the_bounds(): void
     {
         $this->rover = new Rover(
+            Uuid::uuid1(),
             new Terrain(Position::fromString('5', '5'), Obstacle::fromArray([['1','0']])),
             Position::fromString('6', '0'),
             Direction::fromString('E')

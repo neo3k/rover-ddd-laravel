@@ -8,11 +8,13 @@ class CommandBusStatus
 {
     protected int $status;
     protected ?string $message;
+    protected $callback;
 
-    public function __construct($status, $message = null)
+    public function __construct($status, $message = null, $callback = null)
     {
         $this->status = $status;
         $this->message = $message;
+        $this->callback = $callback;
     }
 
     public function getStatus(): int
@@ -20,8 +22,13 @@ class CommandBusStatus
         return $this->status;
     }
 
-    public function getErrorMessage(): ?string
+    public function getMessage(): ?string
     {
         return $this->message;
+    }
+
+    public function getCallback()
+    {
+        return $this->callback;
     }
 }

@@ -57,11 +57,12 @@ class RoverSequence implements CommandBusInterface
                     $roverSpec->ensureNotObstacleInFront($rover, Move::fromString($instruction));
                     $rover->move(Move::fromString($instruction));
                 } catch (InvalidArgumentException $exception) {
-                    return new CommandBusStatus(0, $exception->getMessage());
+                    return new CommandBusStatus(1, $exception->getMessage(), $rover);
                 }
             }
         }
-        return new CommandBusStatus(1);
+
+        return new CommandBusStatus(1, null, $rover);
     }
 
 }

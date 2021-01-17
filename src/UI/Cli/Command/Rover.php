@@ -3,8 +3,11 @@
 namespace Vera\Rover\UI\Cli\Command;
 
 use App\Command\Rover\Sequence\RoverSequenceHandler;
+use App\Query\Rover\FindRoverById;
 use Joselfonseca\LaravelTactician\CommandBusInterface;
 use Illuminate\Console\Command;
+use Ramsey\Uuid\Uuid;
+use SmoothPhp\QueryBus\QueryBus;
 use Vera\Rover\App\Command\Rover\Sequence\RoverSequenceCommand;
 
 class Rover extends Command
@@ -30,12 +33,17 @@ class Rover extends Command
      */
     private CommandBusInterface $commandBus;
     private array $obstacles;
+    /**
+     * @var QueryBus
+     */
+    private QueryBus $queryBus;
 
-    public function __construct(CommandBusInterface $commandBus)
+    public function __construct(CommandBusInterface $commandBus, QueryBus $queryBus)
     {
         parent::__construct();
         $this->obstacles = [];
         $this->commandBus = $commandBus;
+        $this->queryBus = $queryBus;
     }
 
     /**
@@ -76,9 +84,10 @@ class Rover extends Command
         );
 
         $sequence = $this->ask('Rover Sequence: Enter Commands (No blank spaces)');
-
+        $id = Uuid::uuid1();
         $this->commandBus->addHandler(RoverSequenceCommand::class, RoverSequenceHandler::class);
         $command = new RoverSequenceCommand(
+            $id,
             $terrainXInput,
             $terrainYInput,
             $this->obstacles,
@@ -89,10 +98,16 @@ class Rover extends Command
         );
 
         $status = $this->commandBus->dispatch($command);
-        if($status->getStatus() === 0)
+        if($status->getMessage())
         {
-            $this->line($status->getErrorMessage());
+            $this->line($status->getMessage());
         }
+        if($status->getStatus())
+        {
+            $query = $this->queryBus->query(new FindRoverById($id));
+            $this->line($query->__toString());
+        }
+
     }
 
     private function assertIsInteger($input)

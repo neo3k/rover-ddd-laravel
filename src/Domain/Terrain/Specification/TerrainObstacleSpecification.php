@@ -5,7 +5,6 @@ namespace Vera\Rover\Domain\Terrain\Specification;
 
 
 use Vera\Rover\Domain\Rover\Model\Rover;
-use Vera\Rover\Domain\Terrain\ValueObject\Obstacle;
 
 class TerrainObstacleSpecification
 {

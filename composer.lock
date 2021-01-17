@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e2cfadaaa3294fe13e8e945948a62bf7",
+    "content-hash": "2f1a45800f2dbc80691379700adcc08b",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2725,6 +2725,71 @@
                 }
             ],
             "time": "2020-08-18T17:17:46+00:00"
+        },
+        {
+            "name": "smoothphp/querybus",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SmoothPhp/QueryBus.git",
+                "reference": "04945df4e93de2bd0007b43bfe748f9d2ff175e4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SmoothPhp/QueryBus/zipball/04945df4e93de2bd0007b43bfe748f9d2ff175e4",
+                "reference": "04945df4e93de2bd0007b43bfe748f9d2ff175e4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "laravel/laravel": "^5.4.0",
+                "phpunit/phpunit": "4.*",
+                "scrutinizer/ocular": "~1.1",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "SmoothPhp\\QueryBus\\Laravel\\LaravelQueryBusServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SmoothPhp\\QueryBus\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Simon Bennett",
+                    "email": "simon@smoothphp.com",
+                    "homepage": "http://smoothphp.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple bus for queries",
+            "homepage": "https://github.com/smoothphp/querybus",
+            "keywords": [
+                "cqrs",
+                "event sourcing",
+                "querybus",
+                "smoothphp"
+            ],
+            "support": {
+                "issues": "https://github.com/SmoothPhp/QueryBus/issues",
+                "source": "https://github.com/SmoothPhp/QueryBus/tree/master"
+            },
+            "time": "2017-11-16T17:15:46+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

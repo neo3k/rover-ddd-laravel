@@ -15,7 +15,8 @@
         "joselfonseca/laravel-tactician": "^1.0",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
-        "nunomaduro/laravel-console-menu": "^3.2"
+        "nunomaduro/laravel-console-menu": "^3.2",
+        "smoothphp/querybus": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

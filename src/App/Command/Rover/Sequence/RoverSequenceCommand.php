@@ -14,11 +14,12 @@ use Vera\Rover\Domain\Terrain\ValueObject\Obstacle;
 
 class RoverSequenceCommand implements CommandBusInterface
 {
-
+    public string $id;
     public Rover $rover;
     public array $sequence;
 
     public function __construct(
+        string $id,
         string $terrain_max_x,
         string $terrain_max_y,
         array $terrain_obstacles,
@@ -27,8 +28,10 @@ class RoverSequenceCommand implements CommandBusInterface
         string $direction,
         array $sequence
     ) {
+        $this->id = $id;
         $this->terrain = new Terrain(Position::fromString($terrain_max_x, $terrain_max_y), Obstacle::fromArray($terrain_obstacles));
         $this->rover = new Rover(
+            $this->id,
             $this->terrain,
             Position::fromString($position_x, $position_y),
             Direction::fromString($direction)

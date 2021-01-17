@@ -7,6 +7,7 @@ namespace App\Command\Rover\Sequence;
 
 use App\Command\Shared\CommandBusHandlerInterface;
 use App\Command\Shared\CommandBusStatus;
+use Illuminate\Cache\Repository;
 use Vera\Rover\App\Command\Rover\Sequence\RoverSequence;
 use Vera\Rover\App\Command\Rover\Sequence\RoverSequenceCommand;
 use Vera\Rover\Domain\Rover\Specification\RoverDirectionSpecification;
@@ -27,6 +28,7 @@ class RoverSequenceHandler implements CommandBusHandlerInterface
     private TerrainPositionSpecification $terrainPositionSpec;
     private TerrainObstacleSpecification $terrainObstacleSpec;
     private RoverPositionSpecification $roverPositionSpec;
+    private Repository $roverRepository;
 
     /**
      * @var RoverPositionSpecification
@@ -39,7 +41,8 @@ class RoverSequenceHandler implements CommandBusHandlerInterface
         RoverPositionSpecification $roverPositionSpec,
         RoverSpecification $roverSpec,
         TerrainPositionSpecification $terrainPositionSpec,
-        TerrainObstacleSpecification $terrainObstacleSpec
+        TerrainObstacleSpecification $terrainObstacleSpec,
+        Repository $roverRepository
     ) {
         $this->roverDirectionSpec = $roverDirectionSpec;
         $this->roverMoveSpec = $roverMoveSpec;
@@ -48,11 +51,12 @@ class RoverSequenceHandler implements CommandBusHandlerInterface
         $this->roverSpec = $roverSpec;
         $this->terrainPositionSpec = $terrainPositionSpec;
         $this->terrainObstacleSpec = $terrainObstacleSpec;
+        $this->roverRepository = $roverRepository;
     }
 
     public function handle(RoverSequenceCommand $command): CommandBusStatus
     {
-        return (new RoverSequence())->exec(
+        $exec = (new RoverSequence())->exec(
             $command->rover,
             $command->sequence,
             $this->roverDirectionSpec,
@@ -63,6 +67,12 @@ class RoverSequenceHandler implements CommandBusHandlerInterface
             $this->terrainPositionSpec,
             $this->terrainObstacleSpec
         );
+
+        if($exec->getCallback()){
+            $this->roverRepository->put($exec->getCallback()->getId(), $exec->getCallback());
+        }
+
+        return $exec;
 
     }
 }

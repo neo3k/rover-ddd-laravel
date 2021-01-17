@@ -2,6 +2,7 @@
 
 namespace Tests\Rover\Domain\Rover\Model;
 
+use Ramsey\Uuid\Uuid;
 use Vera\Rover\Domain\Rover\Model\Rover;
 use PHPUnit\Framework\TestCase;
 use Vera\Rover\Domain\Rover\ValueObject\Direction;
@@ -17,11 +18,12 @@ class RoverTest extends TestCase
     private $terrain;
     private $position;
     private $direction;
+    private $id;
 
     protected function setUp(): void
     {
         parent::setUp();
-
+        $this->id = Uuid::uuid1();
         $this->terrain = new Terrain(Position::fromString('5', '5'), Obstacle::fromArray([]));
         $this->position = Position::fromString('0', '0');
         $this->direction = Direction::fromString('N');
@@ -32,7 +34,7 @@ class RoverTest extends TestCase
      */
     public function test_rover_move(): void
     {
-        $validation = new Rover($this->terrain, $this->position, $this->direction);
+        $validation = new Rover($this->id, $this->terrain, $this->position, $this->direction);
         $validation->move(Move::fromString('F'));
         self::assertEquals('0 1 N', $validation);
 
@@ -43,7 +45,7 @@ class RoverTest extends TestCase
      */
     public function test_rover_rotate(): void
     {
-        $validation = new Rover($this->terrain, $this->position, $this->direction);
+        $validation = new Rover($this->id, $this->terrain, $this->position, $this->direction);
         $validation->rotate(Rotate::fromString('L'));
         self::assertEquals('0 0 W', $validation);
 
@@ -54,7 +56,7 @@ class RoverTest extends TestCase
      */
     public function test_rover_get_direction(): void
     {
-        $validation = new Rover($this->terrain, $this->position, $this->direction);
+        $validation = new Rover($this->id, $this->terrain, $this->position, $this->direction);
         self::assertEquals($validation->getDirection(), $this->direction);
 
     }
@@ -64,7 +66,7 @@ class RoverTest extends TestCase
      */
     public function test_rover_get_position(): void
     {
-        $validation = new Rover($this->terrain, $this->position, $this->direction);
+        $validation = new Rover($this->id, $this->terrain, $this->position, $this->direction);
         self::assertEquals($validation->getPosition(), $this->position);
 
     }
@@ -74,7 +76,7 @@ class RoverTest extends TestCase
      */
     public function test_rover_get_terrain(): void
     {
-        $validation = new Rover($this->terrain, $this->position, $this->direction);
+        $validation = new Rover($this->id, $this->terrain, $this->position, $this->direction);
         self::assertEquals($validation->getTerrain(), $this->terrain);
 
     }
