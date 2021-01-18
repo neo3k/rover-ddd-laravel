@@ -14,7 +14,7 @@ class CoordinateTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->coordinate = (int)5;
+        $this->coordinate = 5;
     }
 
     /**

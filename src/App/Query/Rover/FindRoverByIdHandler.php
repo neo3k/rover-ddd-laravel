@@ -9,6 +9,8 @@ use Illuminate\Contracts\Cache\Repository;
 class FindRoverByIdHandler
 {
 
+    private $roverRepository;
+
     public function __construct(Repository $roverRepository)
     {
         $this->roverRepository = $roverRepository;
